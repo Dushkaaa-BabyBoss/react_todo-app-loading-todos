@@ -74,7 +74,9 @@ export const App: React.FC = () => {
             return (
               <div
                 data-cy="Todo"
-                className={`todo ${todo.completed ? 'completed' : ''}`}
+                className={classNames('todo', {
+                  completed: todo.completed,
+                })}
                 key={todo.id}
               >
                 <label className="todo__status-label">
@@ -125,7 +127,7 @@ export const App: React.FC = () => {
                   className={classNames('filter__link', {
                     selected: filter === filterType,
                   })}
-                  data-cy="FilterLinkCompleted"
+                  data-cy={`FilterLink${filterType[0].toUpperCase() + filterType.slice(1)}`}
                   onClick={() => setFilter(filterType)}
                 >
                   {filterType[0].toUpperCase() + filterType.slice(1)}
